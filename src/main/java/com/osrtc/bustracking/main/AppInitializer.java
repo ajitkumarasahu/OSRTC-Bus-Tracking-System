@@ -4,6 +4,11 @@ import com.osrtc.bustracking.util.GPSSimulator;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+
+// import com.osrtc.bustracking.util.GPSSimulator;
+// import jakarta.ws.rs.ApplicationPath;
+// import jakarta.ws.rs.core.Application;
+
 @ApplicationPath("/api")
 public class AppInitializer extends Application {
 

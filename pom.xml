@@ -1,16 +1,26 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<!-- 
+    Maven Project Object Model (POM)
+    This file defines project metadata, dependencies, and build configuration
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Maven POM model version -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Project coordinates (unique identification) -->
     <groupId>com.osrtc.bustracking</groupId>
     <artifactId>OSRTC-BusTrackingSystem</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!-- WAR packaging for deployment on a servlet container -->
     <packaging>war</packaging>
 
     <dependencies>
-        <!-- Servlet API -->
+
+        <!-- Servlet API: Provided by the application server (Tomcat, etc.) -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -18,72 +28,78 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Jersey for RESTful APIs -->
-        <!-- <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet</artifactId>
-            <version>2.31</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>2.31</version>
-        </dependency> -->
-
-        <!-- MySQL Connector -->
+        <!-- MySQL JDBC driver for database connectivity -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
 
-        <!-- Logging -->
+        <!-- SLF4J logging API -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.5</version>
         </dependency>
+
+        <!-- Simple SLF4J logging implementation -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.5</version>
         </dependency>
 
-        <!-- Jersey core + servlet integration -->
+        <!-- Jersey servlet container for RESTful web services -->
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
-            <version>2.39</version> <!-- or any 2.x, but same version for all -->
+            <version>2.39</version>
         </dependency>
 
-        <!-- HK2 dependency injection (REQUIRED) -->
+        <!-- HK2 dependency injection support for Jersey -->
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
             <version>2.39</version>
         </dependency>
 
-        <!-- Optional: JSON support -->
+        <!-- JSON serialization/deserialization using Jackson -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>2.39</version>
         </dependency>
+
+        <!-- JAX-RS API (provided by the container at runtime) -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1.1</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
+
+        <!-- Name of the generated WAR file -->
         <finalName>OSRTC-BusTrackingSystem</finalName>
+
         <plugins>
+
+            <!-- Maven Compiler Plugin for Java version configuration -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
+                    <!-- Java source and target compatibility -->
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
+
 </project>
